@@ -51,7 +51,17 @@ namespace Practice13
                 )
             );
 
-            List<Fruit> fruits = HelpfullFuncs.LoadAll(currPath + txtFileName);
+            List<Fruit> fruits = new();
+
+            try
+            {
+                 fruits = HelpfullFuncs.LoadAll(currPath + txtFileName);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+           
 
             fruits.Sort((fruitA, fruitB) => 
             string.Compare(fruitA.Name, fruitB.Name, StringComparison.Ordinal));
@@ -73,7 +83,16 @@ namespace Practice13
                 IncludeFields = true
             };
 
-            string jsonString = JsonSerializer.Serialize(fruits, options);
+            string jsonString = string.Empty;
+
+            try
+            {
+                jsonString = JsonSerializer.Serialize(fruits, options);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             File.WriteAllText(currPath + jsonFileName, jsonString);
 
@@ -81,11 +100,29 @@ namespace Practice13
 
             Console.WriteLine("========= [ FRUITS AFTER DESERIALIZING ] ==========");
 
-            string json = File.ReadAllText(currPath + jsonFileName);
+            string json = string.Empty;
 
-            List<Fruit> fruitsCopy =
-                JsonSerializer.Deserialize<List<Fruit>>(json) ?? new();
+            try
+            {
+                json = File.ReadAllText(currPath + jsonFileName);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
+            List<Fruit> fruitsCopy = new();
+
+            try
+            {
+                fruitsCopy = JsonSerializer.Deserialize<List<Fruit>>(json)
+                    ?? new();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+           
             foreach (var fruit in fruitsCopy)
             {
                 fruit.Print();
