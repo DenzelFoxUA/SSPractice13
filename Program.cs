@@ -94,10 +94,3 @@ namespace Practice13
         }
     }
 }
-
-//3) Create a list of fruits and add 5 different fruits and citrus to it.
-//- Print data about 'yellow' fruits.
-//- Sort the list of fruits by name and output the result to a file
-//- Handle exceptions
-//- Serialize-deserialize the list in Xml/Json format
-//- Add unit tests for class methods

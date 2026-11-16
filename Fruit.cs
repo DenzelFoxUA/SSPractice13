@@ -17,6 +17,10 @@ namespace Practice13
         [JsonConstructor]
         public Color(byte r, byte g, byte b)
         {
+            if (r > 255 || g > 255 || b > 255)
+                throw new ArgumentOutOfRangeException
+                    ("Out of range::color byte values");
+
             R = r;
             G = g;
             B = b;
@@ -287,7 +291,7 @@ namespace Practice13
     public class Citrus : Fruit, IFruit
     {
         /// <summary>
-        /// IN GRAMMS
+        /// IN MILIGRAMS
         /// </summary>
         public uint VitaminC { get; private set; } = 0;
 
@@ -307,12 +311,12 @@ namespace Practice13
         {
             base.ReadFields(result);
 
-            uint grams = 0;
+            uint mlg = 0;
 
-            bool isOk = uint.TryParse(result[2], out grams);
+            bool isOk = uint.TryParse(result[2], out mlg);
 
             if (isOk)
-                VitaminC = grams;
+                VitaminC = mlg;
             else
                 throw new InvalidDataException($"Data error::{nameof(result)}");
 
@@ -338,7 +342,7 @@ namespace Practice13
         public override void Print()
         {
             base.Print();
-            Console.WriteLine($"Vitamin C: {VitaminC} grams");
+            Console.WriteLine($"Vitamin C: {VitaminC} miligrams");
         }
     }
 
