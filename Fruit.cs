@@ -49,7 +49,7 @@ namespace Practice13
             return one.Equals(other);
         }
 
-        public static bool operator !=(Color one, Color other)
+        public static bool operator != (Color one, Color other)
         {
             return !(one.Equals(other));
         }
@@ -80,8 +80,10 @@ namespace Practice13
                 string line = currLine.Trim();
 
                 if (line.Length == 0)
+                {
                     continue;
-
+                }
+                    
                 //відкрити блок
                 if (line == "{")
                 {
@@ -89,9 +91,9 @@ namespace Practice13
                         throw new FormatException("Nested block");
 
                     insideBlock = true;
-                    fields.Clear(); //очистити старий блок коли в середині нового
+                    fields.Clear();     //очистити старий блок коли в середині нового
                 }
-                else if (line == "}") //закрити
+                else if (line == "}")   //закрити
                 {
                     if (!insideBlock)
                         throw new FormatException("Unexpected }");
@@ -112,7 +114,9 @@ namespace Practice13
                 else
                 {
                     if (!insideBlock)
+                    {
                         throw new FormatException("Data outside block");
+                    }
 
                     fields.Add(line);
                 }

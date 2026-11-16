@@ -63,7 +63,6 @@ namespace Practice13
                 Console.ReadLine();
             }
            
-
             fruits.Sort((fruitA, fruitB) => 
             string.Compare(fruitA.Name, fruitB.Name, StringComparison.Ordinal));
 
@@ -74,7 +73,6 @@ namespace Practice13
                 if (fruit.Color == yellow)
                     fruit.Print();
             }
-
 
             //serialization
 
@@ -118,8 +116,8 @@ namespace Practice13
 
             try
             {
-                fruitsCopy = JsonSerializer.Deserialize<List<Fruit>>(json)
-                    ?? new();
+                fruitsCopy = 
+                    JsonSerializer.Deserialize<List<Fruit>>(json) ?? new();
             }
             catch(Exception ex)
             {
@@ -131,7 +129,6 @@ namespace Practice13
             {
                 fruit.Print();
             }
-
         }
     }
 }
