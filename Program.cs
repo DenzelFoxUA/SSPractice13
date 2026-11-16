@@ -60,6 +60,7 @@ namespace Practice13
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.ReadLine();
             }
            
 
@@ -92,6 +93,7 @@ namespace Practice13
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.ReadLine();
             }
 
             File.WriteAllText(currPath + jsonFileName, jsonString);
@@ -109,6 +111,7 @@ namespace Practice13
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.ReadLine();
             }
 
             List<Fruit> fruitsCopy = new();
@@ -121,6 +124,7 @@ namespace Practice13
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.ReadLine();
             }
            
             foreach (var fruit in fruitsCopy)
